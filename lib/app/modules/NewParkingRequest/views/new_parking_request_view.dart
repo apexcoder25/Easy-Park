@@ -2,6 +2,7 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
 import 'package:easy_home/app/core/widgets/custom_text_field.dart';
 import 'package:easy_home/app/modules/NewParkingRequest/components/parking_map_dialog.dart';
+import 'package:easy_home/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -204,7 +205,9 @@ class NewParkingRequestView extends GetView<NewParkingRequestController> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.RETRIVAL_REQUEST);
+                    },
                     child: const Text('Save as Draft',
                         style: TextStyle(color: Colors.black)),
                   ),
@@ -218,7 +221,9 @@ class NewParkingRequestView extends GetView<NewParkingRequestController> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                       Get.toNamed('/park-vehicle');
+                    },
                     icon: const Icon(Icons.send, size: 18),
                     label: const Text('Assign & Notify',
                         style: TextStyle(fontWeight: FontWeight.w600)),

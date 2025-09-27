@@ -53,7 +53,7 @@ class LoginScreenController extends GetxController {
   }
 
   void loginStaff() {
-    // TODO: Implement actual login logic (e.g., API call, validation)
+
     final email = emailStaff.text.trim();
     final password = passStaff.text;
         Get.toNamed(Routes.NEW_PARKING_REQUEST);

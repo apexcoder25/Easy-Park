@@ -1,6 +1,7 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
 import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ParkingMapDialog extends StatefulWidget {
   const ParkingMapDialog({Key? key}) : super(key: key);
@@ -129,7 +130,11 @@ class _ParkingMapDialogState extends State<ParkingMapDialog> with TickerProvider
               width: double.infinity,
               child: CustomButton(
                 text: 'Continue',
-                onTap: () => Navigator.of(context).pop(),
+                onTap: () {
+                  Get.toNamed('/park-vehicle');
+                  Navigator.of(context).pop();
+                
+                },
                 color: AppColors.primary,
                 icon: Icons.arrow_forward,
               ),
