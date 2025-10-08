@@ -80,12 +80,12 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                   ],
                 ),
                 const SizedBox(height: 12),
-                const Text(
+                Text(
                   'Toyota Camry - ABC 123',
                   style: AppTextStyles.heading,
                 ),
                 const SizedBox(height: 6),
-                const Text(
+                Text(
                   'Customer: Sarah Johnson',
                   style: AppTextStyles.label,
                 ),
@@ -122,7 +122,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Delivery Progress', style: AppTextStyles.heading),
+                Text('Delivery Progress', style: AppTextStyles.heading),
                 const SizedBox(height: 12),
 
                 _progressItem(
@@ -170,7 +170,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
               children: [
                 Row(
                   children: [
-                    const Text('Navigation', style: AppTextStyles.heading),
+                    Text('Navigation', style: AppTextStyles.heading),
                     const Spacer(),
                     Text(
                       'Full Screen',
@@ -190,17 +190,17 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                   ),
                   padding: const EdgeInsets.all(20),
                   child: Column(
-                    children: const [
-                      Icon(Icons.map, size: 32, color: AppColors.primary),
-                      SizedBox(height: 8),
-                      Text(
+                    children: [
+                      const Icon(Icons.map, size: 32, color: AppColors.primary),
+                      const SizedBox(height: 8),
+                      const Text(
                         'Route to Pickup Zone A',
                         style: TextStyle(
                           color: AppColors.textPrimary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         '2 mins remaining',
                         style: AppTextStyles.label,
@@ -230,7 +230,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Customer Details', style: AppTextStyles.heading),
+                Text('Customer Details', style: AppTextStyles.heading),
                 const SizedBox(height: 12),
                 Row(
                   children: [
@@ -243,8 +243,8 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             'Sarah Johnson',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -252,7 +252,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                               color: AppColors.textPrimary,
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             '+1 (555) 123-4567',
                             style: AppTextStyles.label,
@@ -271,7 +271,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                   ],
                 ),
                 const SizedBox(height: 12),
-                const Text('Pickup Location:', style: AppTextStyles.label),
+                Text('Pickup Location:', style: AppTextStyles.label),
                 const SizedBox(height: 4),
                 const Text(
                   'Main Entrance - Zone A',
@@ -302,9 +302,9 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Security Verification', style: AppTextStyles.heading),
+                Text('Security Verification', style: AppTextStyles.heading),
                 const SizedBox(height: 6),
-                const Text(
+                Text(
                   'Scan customer\'s QR code',
                   style: AppTextStyles.label,
                 ),
@@ -330,7 +330,7 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                 ),
               ),
               onPressed: () {},
-              child: const Text(
+              child: Text(
                 'Mark as Delivered',
                 style: AppTextStyles.buttonText,
               ),

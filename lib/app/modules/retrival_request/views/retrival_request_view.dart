@@ -162,7 +162,7 @@ class RetrivalRequestView extends GetView<RetrivalRequestController> {
                       color: AppColors.primary),
                 ),
                 const SizedBox(width: 8),
-                const Text('Vehicle Retrieval',
+                Text('Vehicle Retrieval',
                     style: AppTextStyles.heading),
                 const Spacer(),
                 Container(
@@ -207,7 +207,7 @@ class RetrivalRequestView extends GetView<RetrivalRequestController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Customer Information', style: AppTextStyles.heading),
+            Text('Customer Information', style: AppTextStyles.heading),
             const SizedBox(height: 12),
             Row(
               children: [
@@ -254,7 +254,7 @@ class RetrivalRequestView extends GetView<RetrivalRequestController> {
         // Header row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children:  [
             Text('Available Workers', style: AppTextStyles.heading),
             Text(
               '3 online',
