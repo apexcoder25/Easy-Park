@@ -1,4 +1,5 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
+import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 
@@ -92,9 +93,10 @@ class ParkVehiclePage extends StatelessWidget {
             // Submit button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Submit Parked'),
+              child: CustomButton(
+                onTap: () {},
+                  text: 'Submit Parked',
+               
               ),
             ),
 
@@ -319,9 +321,11 @@ class ParkVehiclePage extends StatelessWidget {
                   const Text('Take a photo for records',
                       style: TextStyle(color: AppColors.textSecondary)),
                   const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Take Photo'),
+                  CustomButton(
+                    
+                    text: 'Take Photo',
+                    onTap: () {  },
+                    
                   ),
                 ],
               ),

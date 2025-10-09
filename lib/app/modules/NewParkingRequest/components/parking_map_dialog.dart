@@ -118,16 +118,8 @@ class _ParkingMapDialogState extends State<ParkingMapDialog> with TickerProvider
             ),
 
             // CONTINUE BUTTON
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(
-                color: AppColors.textSecondary,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
-                ),
-              ),
-              width: double.infinity,
+            Padding(
+              padding: const EdgeInsets.all(25),
               child: CustomButton(
                 text: 'Continue',
                 onTap: () {
@@ -151,7 +143,7 @@ class _ParkingMapDialogState extends State<ParkingMapDialog> with TickerProvider
       margin: const EdgeInsets.only(right: 8),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
-        color: selected ? AppColors.selected : Colors.grey.shade200,
+        color: selected ? AppColors.primary : Colors.grey.shade200,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -246,8 +238,8 @@ class _ParkingMapDialogState extends State<ParkingMapDialog> with TickerProvider
                       top: -20,
                       child: Image.asset(
                         'assets/images/1444706-middle-removebg-preview.png',
-                        width: 170,
-                        height: 120,
+                        width: 150,
+                        height: 100,
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -283,8 +275,9 @@ class _ParkingMapDialogState extends State<ParkingMapDialog> with TickerProvider
                     Text(
                       isOccupied ? 'Occupied' : 'Available',
                       style: TextStyle(
-                        fontSize: 12,
-                        color: isOccupied ? Colors.red.shade600 : AppColors.textSecondary,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: isOccupied ? Colors.red.shade600 : AppColors.primary,
                       ),
                     ),
                   ],

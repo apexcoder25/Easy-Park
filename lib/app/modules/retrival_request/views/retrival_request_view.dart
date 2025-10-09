@@ -1,4 +1,5 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
+import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:easy_home/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -318,9 +319,15 @@ class RetrivalRequestView extends GetView<RetrivalRequestController> {
               style: TextStyle(color: AppColors.textSecondary),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Auto Assign'),
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: CustomButton(
+              outline: true,
+              onTap: () {}, 
+              color: AppColors.primary,
+              text: 'Auto Assign',
+              
+            ),
           )
         ],
       ),

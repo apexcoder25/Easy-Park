@@ -1,8 +1,6 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
 import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:easy_home/app/core/widgets/custom_text_field.dart';
-import 'package:easy_home/app/modules/LoginScreen/components/animated_background.dart';
-import 'package:easy_home/app/modules/LoginScreen/components/animated_gradient_text.dart';
 import 'package:easy_home/app/modules/LoginScreen/controllers/login_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,9 +13,10 @@ class LoginScreenView extends StatelessWidget {
     final controller = Get.find<LoginScreenController>();
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Stack(
         children: [
-          const AnimatedBackground(),
+         
           SingleChildScrollView(
             child: SafeArea(
               child: DefaultTabController(
@@ -27,8 +26,8 @@ class LoginScreenView extends StatelessWidget {
                     const SizedBox(height: 40),
                     // Title - Centered with better spacing
                     Center(
-                      child: AnimatedGradientText(
-                        text: 'Easy Park',
+                      child: Text(
+                      'Easy Park',
                         style: AppTextStyles.titleLarge?.copyWith(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
@@ -40,8 +39,7 @@ class LoginScreenView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        colors: const [Color(0xFF4FC3F7), Color(0xFF7C4DFF), Color(0xFFFFB86B)],
-                        duration: const Duration(seconds: 3),
+                       
                       ),
                     ),
                     const SizedBox(height: 32),

@@ -1,4 +1,5 @@
 import 'package:easy_home/app/core/theme/app_theme.dart';
+import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -309,9 +310,12 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
                   style: AppTextStyles.label,
                 ),
                 const SizedBox(height: 12),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Open QR Scanner'),
+                CustomButton(
+                  text: 'Open QR Scanner',
+                  color: AppColors.primary,
+                  onTap: () {},
+                  icon: Icons.qr_code_scanner,
+                  
                 ),
               ],
             ),
@@ -319,20 +323,14 @@ class CarDeliveryView extends GetView<CarDeliveryController> {
           const SizedBox(height: 16),
 
           // Mark as Delivered Button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                'Mark as Delivered',
-                style: AppTextStyles.buttonText,
+          SafeArea(
+            child: SizedBox(
+              width: double.infinity,
+              child: CustomButton(
+                
+                onTap: () {},
+                text: 'Mark as Delivered',
+                icon: Icons.check_circle,
               ),
             ),
           ),
