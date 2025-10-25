@@ -3,6 +3,7 @@ import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:easy_home/app/core/widgets/custom_text_field.dart';
 import 'package:easy_home/app/modules/LoginScreen/controllers/login_screen_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class LoginScreenView extends StatelessWidget {
@@ -12,11 +13,11 @@ class LoginScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<LoginScreenController>();
     final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Stack(
         children: [
-         
           SingleChildScrollView(
             child: SafeArea(
               child: DefaultTabController(
@@ -24,10 +25,10 @@ class LoginScreenView extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 40),
-                    // Title - Centered with better spacing
+                    // Title
                     Center(
                       child: Text(
-                      'Easy Park',
+                        'Easy Park',
                         style: AppTextStyles.titleLarge?.copyWith(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
@@ -39,11 +40,10 @@ class LoginScreenView extends StatelessWidget {
                             ),
                           ],
                         ),
-                       
                       ),
                     ),
                     const SizedBox(height: 32),
-                    // Welcome subtitle for professionalism
+                    // Subtitle
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
@@ -56,11 +56,12 @@ class LoginScreenView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    // Card with tabs for better responsiveness (removed Expanded)
+
+                    // Main Card
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Container(
-                        height: screenHeight * 0.6, // Fixed height for consistency
+                        height: screenHeight * 0.65, // Increased height slightly to accommodate content
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.95),
                           borderRadius: BorderRadius.circular(20),
@@ -74,7 +75,7 @@ class LoginScreenView extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            // Tab bar - Improved styling for professional look
+                            // Tabs
                             Container(
                               margin: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
@@ -111,31 +112,36 @@ class LoginScreenView extends StatelessWidget {
                                 dividerColor: Colors.transparent,
                                 tabs: const [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                                     child: Tab(text: 'Manager'),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                                     child: Tab(text: 'Staff'),
                                   ),
                                 ],
                               ),
                             ),
-                            // Tab views with Expanded for full available space
+
+                            // Tab Views
                             Expanded(
                               child: TabBarView(
                                 children: [
-                                  // Manager form
+                                  // ========== MANAGER LOGIN ==========
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 32, vertical: 16), // Reduced vertical padding
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
                                       children: [
-                                        // Icon for Manager tab
                                         Container(
                                           padding: const EdgeInsets.all(16),
                                           decoration: BoxDecoration(
-                                            color: AppColors.primary.withOpacity(0.1),
+                                            color: AppColors.primary
+                                                .withOpacity(0.1),
                                             shape: BoxShape.circle,
                                           ),
                                           child: Icon(
@@ -144,44 +150,53 @@ class LoginScreenView extends StatelessWidget {
                                             size: 32,
                                           ),
                                         ),
-                                        const SizedBox(height: 16),
+                                        const SizedBox(height: 12), // Reduced from 16
                                         CustomTextField(
                                           hint: 'Email Address',
                                           icon: Icons.email_outlined,
                                           controller: controller.emailManager,
-                                          keyboardType: TextInputType.emailAddress,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
                                         ),
-                                        const SizedBox(height: 20),
+                                        const SizedBox(height: 16), // Reduced from 20
                                         CustomTextField(
                                           hint: 'Password',
                                           icon: Icons.lock_outline,
                                           controller: controller.passManager,
-                                          obscureText: controller.obscureManager.value,
-                                          suffix: Obx(() => IconButton(
-                                            onPressed: controller.toggleObscureManager,
-                                            icon: Icon(
-                                              controller.obscureManager.value ? Icons.visibility_off : Icons.visibility,
-                                              color: AppColors.textSecondary,
+                                          obscureText:
+                                              controller.obscureManager.value,
+                                          suffix: Obx(
+                                            () => IconButton(
+                                              onPressed: controller
+                                                  .toggleObscureManager,
+                                              icon: Icon(
+                                                controller.obscureManager.value
+                                                    ? Icons.visibility_off
+                                                    : Icons.visibility,
+                                                color: AppColors.textSecondary,
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         ),
-                                        const SizedBox(height: 12),
+                                        const SizedBox(height: 8), // Reduced from 12
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: TextButton(
                                             onPressed: () {
-                                              // TODO: Implement forgot password
                                               Get.snackbar(
                                                 'Forgot Password',
                                                 'Password reset link sent to your email.',
-                                                snackPosition: SnackPosition.TOP,
-                                                backgroundColor: AppColors.primary,
+                                                snackPosition:
+                                                    SnackPosition.TOP,
+                                                backgroundColor:
+                                                    AppColors.primary,
                                                 colorText: Colors.white,
                                               );
                                             },
                                             child: Text(
                                               'Forgot Password?',
-                                              style: AppTextStyles.label?.copyWith(
+                                              style: AppTextStyles.label
+                                                  ?.copyWith(
                                                 color: AppColors.primary,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -189,27 +204,83 @@ class LoginScreenView extends StatelessWidget {
                                           ),
                                         ),
                                         const Spacer(),
+
                                         CustomButton(
                                           text: 'Sign In as Manager',
                                           onTap: () {
                                             controller.loginManager();
                                           },
                                         ),
-                                        const SizedBox(height: 8),
+                                        const SizedBox(height: 12), // Reduced from 16
+
+                                        // Divider
+                                        Row(
+                                          children: [
+                                            const Expanded(
+                                                child: Divider(thickness: 1)),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8),
+                                              child: Text(
+                                                'OR',
+                                                style: TextStyle(
+                                                  color: AppColors.textSecondary
+                                                      .withOpacity(0.8),
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                            const Expanded(
+                                                child: Divider(thickness: 1)),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 12), // Reduced from 16
+
+                                        // Social Buttons
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            _SocialButton(
+                                              icon: FontAwesomeIcons.google,
+                                              label: "Google",
+                                              color: Colors.white,
+                                              borderColor:
+                                                  Colors.grey.shade300,
+                                              textColor: Colors.black87,
+                                              onTap: () => controller
+                                                  .googleSignInManager(),
+                                            ),
+                                            const SizedBox(width: 16),
+                                            _SocialButton(
+                                              icon: FontAwesomeIcons.apple,
+                                              label: "Apple",
+                                              color: Colors.black,
+                                              borderColor: Colors.black,
+                                              textColor: Colors.white,
+                                              onTap: () => controller
+                                                  .appleSignInManager(),
+                                            ),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),
-                                  // Staff form
+
+                                  // ========== STAFF LOGIN ==========
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 32, vertical: 16), // Reduced vertical padding
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
                                       children: [
-                                        // Icon for Staff tab
                                         Container(
                                           padding: const EdgeInsets.all(16),
                                           decoration: BoxDecoration(
-                                            color: AppColors.accent.withOpacity(0.1),
+                                            color: AppColors.accent
+                                                .withOpacity(0.1),
                                             shape: BoxShape.circle,
                                           ),
                                           child: Icon(
@@ -218,44 +289,53 @@ class LoginScreenView extends StatelessWidget {
                                             size: 32,
                                           ),
                                         ),
-                                        const SizedBox(height: 16),
+                                        const SizedBox(height: 12), // Reduced from 16
                                         CustomTextField(
                                           hint: 'Email Address',
                                           icon: Icons.email_outlined,
                                           controller: controller.emailStaff,
-                                          keyboardType: TextInputType.emailAddress,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
                                         ),
-                                        const SizedBox(height: 20),
+                                        const SizedBox(height: 16), // Reduced from 20
                                         CustomTextField(
                                           hint: 'Password',
                                           icon: Icons.lock_outline,
                                           controller: controller.passStaff,
-                                          obscureText: controller.obscureStaff.value,
-                                          suffix: Obx(() => IconButton(
-                                            onPressed: controller.toggleObscureStaff,
-                                            icon: Icon(
-                                              controller.obscureStaff.value ? Icons.visibility_off : Icons.visibility,
-                                              color: AppColors.textSecondary,
+                                          obscureText:
+                                              controller.obscureStaff.value,
+                                          suffix: Obx(
+                                            () => IconButton(
+                                              onPressed:
+                                                  controller.toggleObscureStaff,
+                                              icon: Icon(
+                                                controller.obscureStaff.value
+                                                    ? Icons.visibility_off
+                                                    : Icons.visibility,
+                                                color: AppColors.textSecondary,
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         ),
-                                        const SizedBox(height: 12),
+                                        const SizedBox(height: 8), // Reduced from 12
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: TextButton(
                                             onPressed: () {
-                                              // TODO: Implement forgot password
                                               Get.snackbar(
                                                 'Forgot Password',
                                                 'Password reset link sent to your email.',
-                                                snackPosition: SnackPosition.TOP,
-                                                backgroundColor: AppColors.primary,
+                                                snackPosition:
+                                                    SnackPosition.TOP,
+                                                backgroundColor:
+                                                    AppColors.primary,
                                                 colorText: Colors.white,
                                               );
                                             },
                                             child: Text(
                                               'Forgot Password?',
-                                              style: AppTextStyles.label?.copyWith(
+                                              style: AppTextStyles.label
+                                                  ?.copyWith(
                                                 color: AppColors.primary,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -263,13 +343,64 @@ class LoginScreenView extends StatelessWidget {
                                           ),
                                         ),
                                         const Spacer(),
+
                                         CustomButton(
                                           text: 'Sign In as Staff',
                                           onTap: () {
                                             controller.loginStaff();
                                           },
                                         ),
-                                        const SizedBox(height: 8),
+                                        const SizedBox(height: 12), // Reduced from 16
+
+                                        Row(
+                                          children: [
+                                            const Expanded(
+                                                child: Divider(thickness: 1)),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8),
+                                              child: Text(
+                                                'OR',
+                                                style: TextStyle(
+                                                  color: AppColors.textSecondary
+                                                      .withOpacity(0.8),
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                            const Expanded(
+                                                child: Divider(thickness: 1)),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 12), // Reduced from 16
+
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            _SocialButton(
+                                              icon: FontAwesomeIcons.google,
+                                              label: "Google",
+                                              color: Colors.white,
+                                              borderColor:
+                                                  Colors.grey.shade300,
+                                              textColor: Colors.black87,
+                                              onTap: () => controller
+                                                  .googleSignInStaff(),
+                                            ),
+                                            const SizedBox(width: 16),
+                                            _SocialButton(
+                                              icon: FontAwesomeIcons.apple,
+                                              label: "Apple",
+                                              color: Colors.black,
+                                              borderColor: Colors.black,
+                                              textColor: Colors.white,
+                                              onTap: () => controller
+                                                  .appleSignInStaff(),
+                                            ),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -280,8 +411,10 @@ class LoginScreenView extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 40),
-                    // Footer text for additional professionalism
+
+                    // Footer
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Row(
@@ -295,7 +428,6 @@ class LoginScreenView extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // TODO: Navigate to signup
                               print('Navigate to signup');
                             },
                             child: Text(
@@ -316,6 +448,60 @@ class LoginScreenView extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SocialButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+  final Color borderColor;
+  final Color textColor;
+  final VoidCallback onTap;
+
+  const _SocialButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.borderColor,
+    required this.textColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(30),
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: borderColor, width: 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            FaIcon(icon, color: textColor, size: 20),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Easy Home</string>
+	<string>Easy Park</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +45,23 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Added for Google Sign-In and Firebase (replace REVERSED_CLIENT_ID with the actual value from GoogleService-Info.plist) -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>REVERSED_CLIENT_ID</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>REVERSED_CLIENT_ID</string>
+			</array>
+		</dict>
+	</array>
+	<!-- Added for App Store links (optional but recommended for Apple Sign-In and updates) -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms-beta</string>
+		<string>itms-apps</string>
+	</array>
 </dict>
 </plist>

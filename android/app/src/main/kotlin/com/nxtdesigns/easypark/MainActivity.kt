@@ -1,4 +1,4 @@
-package com.example.easy_home
+package com.nxtdesigns.easypark
 
 import io.flutter.embedding.android.FlutterActivity
 

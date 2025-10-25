@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "575394412821",
+    "project_id": "qikpark-d205a",
+    "storage_bucket": "qikpark-d205a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575394412821:android:60c4e62c8513e10e85511c",
+        "android_client_info": {
+          "package_name": "com.nxtdesigns.easypark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575394412821-lrn8nbb5o77qehi2nbjvtbgrn8pd29je.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nxtdesigns.easypark",
+            "certificate_hash": "2c0366ffd3d4fffc420d77a8a2de50c2dfb1486a"
+          }
+        },
+        {
+          "client_id": "575394412821-m5ji5u6l3aiptmi81mh9v03oea7bm637.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzwsq4JpiLBsWU-xUM6sBcy9dprKdehoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575394412821-m5ji5u6l3aiptmi81mh9v03oea7bm637.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "575394412821-16sqsn3l07u4rq7hnsm7papjk5iadpk0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nxtdesigns.easypark",
+                "app_store_id": "123456789"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
