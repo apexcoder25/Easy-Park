@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "575394412821-lchvm17e885ijfl99go6vqltuff038l8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nxtdesigns.easypark",
+            "certificate_hash": "a0b8c3389f204b939c5812ce2d265c2f127e81b3"
+          }
+        },
+        {
           "client_id": "575394412821-lrn8nbb5o77qehi2nbjvtbgrn8pd29je.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
