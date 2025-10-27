@@ -3,16 +3,18 @@ import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:easy_home/app/core/widgets/custom_text_field.dart';
 import 'package:easy_home/app/modules/LoginScreen/controllers/login_screen_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class LoginScreenView extends StatelessWidget {
   const LoginScreenView({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<LoginScreenController>();
     final screenHeight = MediaQuery.of(context).size.height;
+    final isAndroid = defaultTargetPlatform == TargetPlatform.android;
+    final isIOS = defaultTargetPlatform == TargetPlatform.iOS;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -29,7 +31,7 @@ class LoginScreenView extends StatelessWidget {
                     Center(
                       child: Text(
                         'Easy Park',
-                        style: AppTextStyles.titleLarge?.copyWith(
+                        style: AppTextStyles.titleLarge.copyWith(
                           fontSize: 36,
                           fontWeight: FontWeight.bold,
                           shadows: [
@@ -48,7 +50,7 @@ class LoginScreenView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
                         'Welcome back! Please sign in to your account.',
-                        style: AppTextStyles.heading?.copyWith(
+                        style: AppTextStyles.heading.copyWith(
                           color: AppColors.textPrimary,
                           fontSize: 18,
                         ),
@@ -61,7 +63,8 @@ class LoginScreenView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Container(
-                        height: screenHeight * 0.65, // Increased height slightly to accommodate content
+                        height: screenHeight *
+                            0.65, // Increased height slightly to accommodate content
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.95),
                           borderRadius: BorderRadius.circular(20),
@@ -112,13 +115,13 @@ class LoginScreenView extends StatelessWidget {
                                 dividerColor: Colors.transparent,
                                 tabs: const [
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 24),
                                     child: Tab(text: 'Manager'),
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 24),
                                     child: Tab(text: 'Staff'),
                                   ),
                                 ],
@@ -132,7 +135,9 @@ class LoginScreenView extends StatelessWidget {
                                   // ========== MANAGER LOGIN ==========
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 32, vertical: 16), // Reduced vertical padding
+                                        horizontal: 32,
+                                        vertical:
+                                            16), // Reduced vertical padding
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,
@@ -150,7 +155,8 @@ class LoginScreenView extends StatelessWidget {
                                             size: 32,
                                           ),
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
                                         CustomTextField(
                                           hint: 'Email Address',
                                           icon: Icons.email_outlined,
@@ -158,7 +164,8 @@ class LoginScreenView extends StatelessWidget {
                                           keyboardType:
                                               TextInputType.emailAddress,
                                         ),
-                                        const SizedBox(height: 16), // Reduced from 20
+                                        const SizedBox(
+                                            height: 16), // Reduced from 20
                                         CustomTextField(
                                           hint: 'Password',
                                           icon: Icons.lock_outline,
@@ -178,7 +185,8 @@ class LoginScreenView extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(height: 8), // Reduced from 12
+                                        const SizedBox(
+                                            height: 8), // Reduced from 12
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: TextButton(
@@ -195,8 +203,8 @@ class LoginScreenView extends StatelessWidget {
                                             },
                                             child: Text(
                                               'Forgot Password?',
-                                              style: AppTextStyles.label
-                                                  ?.copyWith(
+                                              style:
+                                                  AppTextStyles.label.copyWith(
                                                 color: AppColors.primary,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -211,7 +219,8 @@ class LoginScreenView extends StatelessWidget {
                                             controller.loginManager();
                                           },
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
 
                                         // Divider
                                         Row(
@@ -235,33 +244,71 @@ class LoginScreenView extends StatelessWidget {
                                                 child: Divider(thickness: 1)),
                                           ],
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
 
                                         // Social Buttons
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            _SocialButton(
-                                              icon: FontAwesomeIcons.google,
-                                              label: "Google",
-                                              color: Colors.white,
-                                              borderColor:
-                                                  Colors.grey.shade300,
-                                              textColor: Colors.black87,
-                                              onTap: () => controller
-                                                  .googleSignInManager(),
-                                            ),
-                                            const SizedBox(width: 16),
-                                            _SocialButton(
-                                              icon: FontAwesomeIcons.apple,
-                                              label: "Apple",
-                                              color: Colors.black,
-                                              borderColor: Colors.black,
-                                              textColor: Colors.white,
-                                              onTap: () => controller
-                                                  .appleSignInManager(),
-                                            ),
+                                            ...(isAndroid
+                                                ? [
+                                                    _SocialButton(
+                                                      icon: FontAwesomeIcons
+                                                          .google,
+                                                      label: "Google",
+                                                      color: Colors.white,
+                                                      borderColor:
+                                                          Colors.grey.shade300,
+                                                      textColor: Colors.black87,
+                                                      onTap: () => controller
+                                                          .googleSignInManager(),
+                                                    )
+                                                  ]
+                                                : isIOS
+                                                    ? [
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .apple,
+                                                          label: "Apple",
+                                                          color: Colors.black,
+                                                          borderColor:
+                                                              Colors.black,
+                                                          textColor:
+                                                              Colors.white,
+                                                          onTap: () => controller
+                                                              .appleSignInManager(),
+                                                        )
+                                                      ]
+                                                    : [
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .google,
+                                                          label: "Google",
+                                                          color: Colors.white,
+                                                          borderColor: Colors
+                                                              .grey.shade300,
+                                                          textColor:
+                                                              Colors.black87,
+                                                          onTap: () => controller
+                                                              .googleSignInManager(),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 16),
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .apple,
+                                                          label: "Apple",
+                                                          color: Colors.black,
+                                                          borderColor:
+                                                              Colors.black,
+                                                          textColor:
+                                                              Colors.white,
+                                                          onTap: () => controller
+                                                              .appleSignInManager(),
+                                                        ),
+                                                      ])
                                           ],
                                         ),
                                       ],
@@ -271,7 +318,9 @@ class LoginScreenView extends StatelessWidget {
                                   // ========== STAFF LOGIN ==========
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 32, vertical: 16), // Reduced vertical padding
+                                        horizontal: 32,
+                                        vertical:
+                                            16), // Reduced vertical padding
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,
@@ -289,7 +338,8 @@ class LoginScreenView extends StatelessWidget {
                                             size: 32,
                                           ),
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
                                         CustomTextField(
                                           hint: 'Email Address',
                                           icon: Icons.email_outlined,
@@ -297,7 +347,8 @@ class LoginScreenView extends StatelessWidget {
                                           keyboardType:
                                               TextInputType.emailAddress,
                                         ),
-                                        const SizedBox(height: 16), // Reduced from 20
+                                        const SizedBox(
+                                            height: 16), // Reduced from 20
                                         CustomTextField(
                                           hint: 'Password',
                                           icon: Icons.lock_outline,
@@ -317,7 +368,8 @@ class LoginScreenView extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(height: 8), // Reduced from 12
+                                        const SizedBox(
+                                            height: 8), // Reduced from 12
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: TextButton(
@@ -334,8 +386,8 @@ class LoginScreenView extends StatelessWidget {
                                             },
                                             child: Text(
                                               'Forgot Password?',
-                                              style: AppTextStyles.label
-                                                  ?.copyWith(
+                                              style:
+                                                  AppTextStyles.label.copyWith(
                                                 color: AppColors.primary,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -350,7 +402,8 @@ class LoginScreenView extends StatelessWidget {
                                             controller.loginStaff();
                                           },
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
 
                                         Row(
                                           children: [
@@ -373,32 +426,70 @@ class LoginScreenView extends StatelessWidget {
                                                 child: Divider(thickness: 1)),
                                           ],
                                         ),
-                                        const SizedBox(height: 12), // Reduced from 16
+                                        const SizedBox(
+                                            height: 12), // Reduced from 16
 
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            _SocialButton(
-                                              icon: FontAwesomeIcons.google,
-                                              label: "Google",
-                                              color: Colors.white,
-                                              borderColor:
-                                                  Colors.grey.shade300,
-                                              textColor: Colors.black87,
-                                              onTap: () => controller
-                                                  .googleSignInStaff(),
-                                            ),
-                                            const SizedBox(width: 16),
-                                            _SocialButton(
-                                              icon: FontAwesomeIcons.apple,
-                                              label: "Apple",
-                                              color: Colors.black,
-                                              borderColor: Colors.black,
-                                              textColor: Colors.white,
-                                              onTap: () => controller
-                                                  .appleSignInStaff(),
-                                            ),
+                                            ...(isAndroid
+                                                ? [
+                                                    _SocialButton(
+                                                      icon: FontAwesomeIcons
+                                                          .google,
+                                                      label: "Google",
+                                                      color: Colors.white,
+                                                      borderColor:
+                                                          Colors.grey.shade300,
+                                                      textColor: Colors.black87,
+                                                      onTap: () => controller
+                                                          .googleSignInStaff(),
+                                                    )
+                                                  ]
+                                                : isIOS
+                                                    ? [
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .apple,
+                                                          label: "Apple",
+                                                          color: Colors.black,
+                                                          borderColor:
+                                                              Colors.black,
+                                                          textColor:
+                                                              Colors.white,
+                                                          onTap: () => controller
+                                                              .appleSignInStaff(),
+                                                        )
+                                                      ]
+                                                    : [
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .google,
+                                                          label: "Google",
+                                                          color: Colors.white,
+                                                          borderColor: Colors
+                                                              .grey.shade300,
+                                                          textColor:
+                                                              Colors.black87,
+                                                          onTap: () => controller
+                                                              .googleSignInStaff(),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 16),
+                                                        _SocialButton(
+                                                          icon: FontAwesomeIcons
+                                                              .apple,
+                                                          label: "Apple",
+                                                          color: Colors.black,
+                                                          borderColor:
+                                                              Colors.black,
+                                                          textColor:
+                                                              Colors.white,
+                                                          onTap: () => controller
+                                                              .appleSignInStaff(),
+                                                        ),
+                                                      ])
                                           ],
                                         ),
                                       ],
@@ -422,7 +513,7 @@ class LoginScreenView extends StatelessWidget {
                         children: [
                           Text(
                             "Don't have an account? ",
-                            style: AppTextStyles.label?.copyWith(
+                            style: AppTextStyles.label.copyWith(
                               color: AppColors.textSecondary,
                             ),
                           ),
@@ -432,7 +523,7 @@ class LoginScreenView extends StatelessWidget {
                             },
                             child: Text(
                               'Sign Up',
-                              style: AppTextStyles.buttonText?.copyWith(
+                              style: AppTextStyles.buttonText.copyWith(
                                 color: AppColors.primary,
                                 fontWeight: FontWeight.w600,
                               ),
