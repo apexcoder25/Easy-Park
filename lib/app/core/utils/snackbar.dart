@@ -1,77 +1,47 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:qrbuddy_user/app/core/theme/app_theme.dart';
+import 'package:easy_home/app/core/theme/app_theme.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-// class CustomSnackbar {
-//   static info(String message) {
-//     Get.showSnackbar(
-//       GetSnackBar(
-//         messageText: Text(
-//           message,
-//           style: AppTheme.theme.textTheme.bodyMedium
-//               ?.copyWith(color: Colors.white),
-//         ),
-//         icon: const Icon(
-//           Icons.info_outline,
-//           color: Colors.white,
-//         ),
-//         shouldIconPulse: false,
-//         backgroundColor: AppColors.primaryColor.withOpacity(0.9),
-//         barBlur: 50.0,
-//         margin: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20.0),
-//         borderRadius: 15.0,
-//         animationDuration: const Duration(milliseconds: 100),
-//         forwardAnimationCurve: Curves.elasticIn,
-//         duration: const Duration(seconds: 3),
-//       ),
-//     );
-//   }
+class CustomSnackbar {
+  static info(String title, String message) {
+    Get.snackbar(
+      title,
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: AppColors.primary,
+      colorText: Colors.white,
+      borderRadius: 12,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      duration: const Duration(seconds: 3),
+      icon: const Icon(Icons.info_outline, color: Colors.white),
+    );
+  }
 
-//   static success(String message) {
-//     Get.showSnackbar(
-//       GetSnackBar(
-//         messageText: Text(
-//           message,
-//           style: AppTheme.theme.textTheme.bodyMedium
-//               ?.copyWith(color: Colors.white),
-//         ),
-//         icon: const Icon(
-//           Icons.check_circle_outline,
-//           color: Colors.white,
-//         ),
-//         shouldIconPulse: false,
-//         backgroundColor: Colors.green.withOpacity(0.9),
-//         barBlur: 50.0,
-//         margin: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20.0),
-//         borderRadius: 15.0,
-//         animationDuration: const Duration(milliseconds: 100),
-//         forwardAnimationCurve: Curves.elasticIn,
-//         duration: const Duration(seconds: 3),
-//       ),
-//     );
-//   }
+  static success(String title, String message) {
+    Get.snackbar(
+      title,
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: AppColors.verifyButtonColor, // ✅ Theme green
+      colorText: Colors.white,
+      borderRadius: 12,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      duration: const Duration(seconds: 3),
+      icon: const Icon(Icons.check_circle_outline, color: Colors.white),
+    );
+  }
 
-//   static error(String message) {
-//     Get.showSnackbar(
-//       GetSnackBar(
-//         messageText: Text(
-//           message,
-//           style: AppTheme.theme.textTheme.bodyMedium
-//               ?.copyWith(color: Colors.white),
-//         ),
-//         icon: const Icon(
-//           Icons.error_outline,
-//           color: Colors.white,
-//         ),
-//         shouldIconPulse: false,
-//         backgroundColor: Colors.redAccent.withOpacity(0.9),
-//         barBlur: 50.0,
-//         margin: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20.0),
-//         borderRadius: 15.0,
-//         animationDuration: const Duration(milliseconds: 100),
-//         forwardAnimationCurve: Curves.elasticIn,
-//         duration: const Duration(seconds: 3),
-//       ),
-//     );
-//   }
-// }
+  static error(String title, String message) {
+    Get.snackbar(
+      title,
+      message,
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: AppColors.dangerButtonColor, // ✅ Theme red
+      colorText: Colors.white,
+      borderRadius: 12,
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      duration: const Duration(seconds: 3),
+      icon: const Icon(Icons.error_outline, color: Colors.white),
+    );
+  }
+}

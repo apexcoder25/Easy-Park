@@ -2,8 +2,9 @@ import 'package:easy_home/app/core/theme/app_theme.dart';
 import 'package:easy_home/app/core/widgets/custom_button.dart';
 import 'package:easy_home/app/core/widgets/custom_text_field.dart';
 import 'package:easy_home/app/modules/LoginScreen/controllers/login_screen_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:easy_home/app/routes/app_pages.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -374,6 +375,7 @@ class LoginScreenView extends StatelessWidget {
                                           alignment: Alignment.centerRight,
                                           child: TextButton(
                                             onPressed: () {
+                                              Get.toNamed(Routes.ADMIN_DASHBOARD);
                                               Get.snackbar(
                                                 'Forgot Password',
                                                 'Password reset link sent to your email.',
