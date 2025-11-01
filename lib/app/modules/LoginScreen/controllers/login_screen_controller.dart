@@ -8,11 +8,14 @@ class LoginScreenController extends GetxController {
   // Text Controllers
   late TextEditingController emailManager;
   late TextEditingController passManager;
+  late TextEditingController emailAdmin;
+  late TextEditingController passAdmin;
   late TextEditingController emailStaff;
   late TextEditingController passStaff;
 
   // Obscure Text Toggles
   final obscureManager = true.obs;
+  final obscureAdmin = true.obs;
   final obscureStaff = true.obs;
 
   @override
@@ -21,6 +24,8 @@ class LoginScreenController extends GetxController {
 
     emailManager = TextEditingController();
     passManager = TextEditingController();
+    emailAdmin = TextEditingController();
+    passAdmin = TextEditingController();
     emailStaff = TextEditingController();
     passStaff = TextEditingController();
 
@@ -42,6 +47,8 @@ class LoginScreenController extends GetxController {
   void onClose() {
     emailManager.dispose();
     passManager.dispose();
+    emailAdmin.dispose();
+    passAdmin.dispose();
     emailStaff.dispose();
     passStaff.dispose();
     super.onClose();
@@ -49,6 +56,7 @@ class LoginScreenController extends GetxController {
 
   // Toggle password visibility
   void toggleObscureManager() => obscureManager.value = !obscureManager.value;
+  void toggleObscureAdmin() => obscureAdmin.value = !obscureAdmin.value;
   void toggleObscureStaff() => obscureStaff.value = !obscureStaff.value;
 
   // ---------------- Manager Login ----------------
@@ -63,6 +71,21 @@ class LoginScreenController extends GetxController {
     }
 
     print('Manager Login: $email');
+    Get.toNamed(Routes.NEW_PARKING_REQUEST);
+  }
+
+  // ---------------- Admin Login ----------------
+  void loginAdmin() {
+    final email = emailAdmin.text.trim();
+    final password = passAdmin.text;
+
+    if (email.isEmpty || password.isEmpty) {
+      Get.snackbar('Error', 'Please enter email and password',
+          snackPosition: SnackPosition.TOP);
+      return;
+    }
+
+    print('Admin Login: $email');
     Get.toNamed(Routes.NEW_PARKING_REQUEST);
   }
 
@@ -87,12 +110,42 @@ class LoginScreenController extends GetxController {
       await GoogleSignIn.instance.signOut();
       await GoogleSignIn.instance.disconnect();
 
-      final GoogleSignInAccount account =
-          await GoogleSignIn.instance.authenticate(scopeHint: ['email', 'profile']);
+      final GoogleSignInAccount account = await GoogleSignIn.instance
+          .authenticate(scopeHint: ['email', 'profile']);
 
       final idToken = account.authentication.idToken;
 
       print("Manager Google Sign-In successful: ${account.email}");
+      print("ID Token: $idToken");
+
+      Get.toNamed(Routes.NEW_PARKING_REQUEST);
+    } on GoogleSignInException catch (e) {
+      if (e.code == GoogleSignInExceptionCode.canceled) {
+        Get.snackbar(
+          'Sign-In Cancelled',
+          'Account re-authentication failed. Please try again.',
+          snackPosition: SnackPosition.TOP,
+        );
+      } else {
+        Get.snackbar('Google Sign-In Failed', e.toString(),
+            snackPosition: SnackPosition.TOP);
+      }
+    } catch (e) {
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.TOP);
+    }
+  }
+
+  Future<void> googleSignInAdmin() async {
+    try {
+      await GoogleSignIn.instance.signOut();
+      await GoogleSignIn.instance.disconnect();
+
+      final GoogleSignInAccount account = await GoogleSignIn.instance
+          .authenticate(scopeHint: ['email', 'profile']);
+
+      final idToken = account.authentication.idToken;
+
+      print("Admin Google Sign-In successful: ${account.email}");
       print("ID Token: $idToken");
 
       Get.toNamed(Routes.NEW_PARKING_REQUEST);
@@ -117,8 +170,8 @@ class LoginScreenController extends GetxController {
       await GoogleSignIn.instance.signOut();
       await GoogleSignIn.instance.disconnect();
 
-      final GoogleSignInAccount account =
-          await GoogleSignIn.instance.authenticate(scopeHint: ['email', 'profile']);
+      final GoogleSignInAccount account = await GoogleSignIn.instance
+          .authenticate(scopeHint: ['email', 'profile']);
 
       final idToken = account.authentication.idToken;
 
@@ -144,6 +197,25 @@ class LoginScreenController extends GetxController {
 
   // ---------------- Apple Sign-In ----------------
   Future<void> appleSignInManager() async {
+    try {
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+
+      print('Apple Sign-In successful: ${credential.email}');
+      print('User ID: ${credential.userIdentifier}');
+
+      Get.toNamed(Routes.NEW_PARKING_REQUEST);
+    } catch (e) {
+      Get.snackbar('Apple Sign-In Failed', e.toString(),
+          snackPosition: SnackPosition.TOP);
+    }
+  }
+
+  Future<void> appleSignInAdmin() async {
     try {
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
