@@ -86,7 +86,7 @@ class LoginScreenController extends GetxController {
     }
 
     print('Admin Login: $email');
-    Get.toNamed(Routes.NEW_PARKING_REQUEST);
+    Get.toNamed(Routes.ADMIN_DASHBOARD);
   }
 
   // ---------------- Staff Login ----------------
@@ -148,7 +148,7 @@ class LoginScreenController extends GetxController {
       print("Admin Google Sign-In successful: ${account.email}");
       print("ID Token: $idToken");
 
-      Get.toNamed(Routes.NEW_PARKING_REQUEST);
+      Get.toNamed(Routes.ADMIN_DASHBOARD);
     } on GoogleSignInException catch (e) {
       if (e.code == GoogleSignInExceptionCode.canceled) {
         Get.snackbar(
